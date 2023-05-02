@@ -7,7 +7,6 @@ import NavbarChef from '../pages/Shared/NavbarChef/NavbarChef';
 const Main = () => {
     return (
         <div>
-            <Header></Header>
             <NavbarChef></NavbarChef>
             <Outlet></Outlet>
             <Footer></Footer>

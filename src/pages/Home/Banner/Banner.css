@@ -1,0 +1,9 @@
+.banner-bg{
+    background-image: url(../../../assets/image/banner.jpg);
+    background-position: center center;
+    background-size: cover;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-color: rgb(96, 96, 96);
+}

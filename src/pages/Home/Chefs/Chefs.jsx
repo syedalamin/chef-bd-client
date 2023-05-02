@@ -13,7 +13,7 @@ const Chefs = () => {
     return (
         <div className='text-center'>
             <h4>All Shef {chef.length}</h4>
-            <div className='grid grid-cols-3'>
+            <div className='grid lg:grid-cols-3  md:grid-cols-2'>
                 {
                     chef.map(che =>
                         <SingleChef
