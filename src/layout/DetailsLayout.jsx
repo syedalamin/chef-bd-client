@@ -2,8 +2,7 @@ import React from 'react';
 import Footer from '../pages/Shared/Footer/Footer';
 import { Outlet } from 'react-router-dom';
 import NavbarChef from '../pages/Shared/NavbarChef/NavbarChef';
-
-const Main = () => {
+const Details = () => {
     return (
         <div>
             <NavbarChef></NavbarChef>
@@ -13,4 +12,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default Details;
