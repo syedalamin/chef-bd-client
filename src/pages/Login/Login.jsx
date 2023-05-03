@@ -57,17 +57,17 @@ const Login = () => {
     }
 
     return (
-        <div className='flex justify-center items-center'>
+        <div className='flex justify-center items-center my-10'>
             <div className="card w-96 bg-base-100 shadow-xl">
-                <h2 className='text-xl text-center'>Please login</h2>
                 <div className="card-body items-center ">
+                    <h2 className='text-xl text-center font-bold'>Please login</h2>
                     <form onSubmit={handleLogin} >
                         <div>
                             <label >Email</label>
                             <input type="email" name='email' placeholder="Your Email" className="input input-bordered input-success w-full max-w-xs my-2" required />
                         </div>
                         <div>
-                            <label >Password</label>
+                            <label>Password</label>
                             <input type="password" name='password' placeholder="Password" className="input input-bordered input-success w-full max-w-xs my-2" required />
                         </div>
                         <div className='flex'>

@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <div className=' bg-black text-white pt-14 '>
             <div className='w-10/12 mx-auto'>
-                <div className='grid grid-cols-3 pb-5'>
+                <div className='grid md:grid-cols-3 pb-5'>
                     <div>
                         <h4 className='text-2xl font-bold pb-2'>Subscribe</h4>
                         <p>Give yourself the confidence <br /> to cook for a lifetime.</p>

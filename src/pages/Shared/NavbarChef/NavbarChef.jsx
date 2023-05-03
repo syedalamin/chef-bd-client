@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import {Link} from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import './navbarChef.css'
+import ActiveLink from '../../Home/ActiveLink/ActiveLink';
 const NavbarChef = () => {
 
     const {user, logOut} = useContext(AuthContext);
@@ -13,37 +15,39 @@ const NavbarChef = () => {
 
 
     return (
-        <div>
-            <div className="navbar bg-base-100   w-10/12 mx-auto">
+        <div className='bg-gray-100 '>
+            <nav className="navbar  w-10/12 mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><Link to='/'>Home</Link></li>
-                            <li><Link to='/blog'>Blog</Link></li>
-                        </ul>
+                        <div tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            <ActiveLink to='/'>Home</ActiveLink>
+                            <ActiveLink to='/blog'>Blog</ActiveLink>
+                            <ActiveLink to='/register'>Register</ActiveLink>
+                        </div>
                     </div>
                     <a className="text-xl font-bold">Chef-Tutul</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/blog'>Blog</Link></li>
+                        <ActiveLink  to='/'>Home</ActiveLink>
+                        <ActiveLink to='/blog'>Blog</ActiveLink>
+                        <ActiveLink to='/register'>Register</ActiveLink>
                     </ul>
                 </div>
                 <div className="navbar-end">
                     
                     {
-                        user &&  <img  className=' mx-5 rounded-full' style={{width: '50px'}} src={user?.photoURL}alt="" />
+                        user &&  <img  className=' mx-5 rounded-full' style={{width: '35px', height: '35px'}} src={user.photoURL}alt="" />
                     }
                     { user ?
-                       <button onClick={handleLogOut} className='btn btn-sm '>LogOut</button>:
-                       <Link to='/login'><button className='btn btn-sm '>Login</button></Link>
+                       <button onClick={handleLogOut} className='btn btn-sm bg-green-700'>LogOut</button>:
+                       <Link to='/login'><button className='btn btn-sm bg-teal-700'>Login</button></Link>
                     }
                 </div>
-            </div>
+            </nav>
         </div>
     );
 };

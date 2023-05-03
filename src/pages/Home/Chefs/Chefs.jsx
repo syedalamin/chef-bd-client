@@ -12,7 +12,7 @@ const Chefs = () => {
     return (
         <div className='text-center my-10'>
             <h4 className='text-4xl my-10 font-bold'>Our Chef</h4>
-            <div className='grid lg:grid-cols-4 gap-4 md:grid-cols-2 w-10/12 mx-auto'>
+            <div className='grid lg:grid-cols-3 gap-4 md:grid-cols-2 w-10/12 mx-auto'>
                 {
                     chef.map(che =>
                         <SingleChef
