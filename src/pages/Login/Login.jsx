@@ -35,25 +35,25 @@ const Login = () => {
 
     const handleGoogle = () => {
         signInGoogle()
-        .then(result =>{
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            navigate(from, { replace: true })
-        })
-        .catch(error =>{
-            console.log(error.message)
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
     }
     const handleGithub = () => {
         signInGithub()
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser)
-            navigate(from, { replace: true })
-        })
-        .catch(error =>{
-            console.log(error.message)
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
     }
 
     return (

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, signInGoogle, signInGithub } = useContext(AuthContext);
     const [accepeted, setAccepeted] = useState(false);
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/';
@@ -30,8 +30,31 @@ const Register = () => {
     }
 
 
-    const handleAccepted = event =>{
+    const handleAccepted = event => {
         setAccepeted(event.target.checked);
+    }
+
+    const handleGoogle = () => {
+        signInGoogle()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+    const handleGithub = () => {
+        signInGithub()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
     }
 
     return (
@@ -59,6 +82,11 @@ const Register = () => {
                         <div className='flex'>
                             <input onClick={handleAccepted} type="checkbox" name="chek" />
                             <p className='ps-2'>I agree terms and conditions </p>
+                        </div>
+                        <p className='text-center font-semibold'><small>or login using</small></p>
+                        <div className='flex justify-center  py-4'>
+                            <button onClick={handleGoogle} className='mx-2' > <img style={{ width: '37px' }} src="https://www.transparentpng.com/thumb/google-logo/colorful-google-logo-transparent-clipart-download-u3DWLj.png" alt="" /></button>
+                            <button onClick={handleGithub} className='mx-2'><img style={{ width: '28px' }} src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="" /></button>
                         </div>
 
                         <div>
