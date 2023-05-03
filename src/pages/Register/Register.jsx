@@ -4,7 +4,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
-    const { createUser, signInGoogle, signInGithub } = useContext(AuthContext);
+    const { createUser,  } = useContext(AuthContext);
     const [accepeted, setAccepeted] = useState(false);
 
 
@@ -33,7 +33,8 @@ const Register = () => {
                 const creatededUser = result.user;
                 console.log(creatededUser);
                 setSuccess('user has created success');
-                updateUser(result.user, name, photo)
+                updateUser(result.user, name, photo);
+                form.reset();
             })
             .catch(error => {
                 setError(error.message);
@@ -41,43 +42,25 @@ const Register = () => {
 
     }
 
-    const updateUser = ( user, name, photoURL) =>{
+    const updateUser = (user, name, photoURL) => {
         updateProfile(user, {
-            displayName : name,
+            displayName: name,
             photoURL: photoURL,
         })
-        .then(() =>{
-            console.log('username update');
-        })
-        .catch(error =>{
-            setError(error.message);
-        })
+            .then(() => {
+               
+            })
+            .catch(error => {
+                setError(error.message);
+            })
     }
 
     const handleAccepted = event => {
         setAccepeted(event.target.checked);
     }
 
-    const handleGoogle = () => {
-        signInGoogle()
-            .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser);
-            })
-            .catch(error => {
-                setError(error.message)
-            })
-    }
-    const handleGithub = () => {
-        signInGithub()
-            .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser)
-            })
-            .catch(error => {
-                setError(error.message)
-            })
-    }
+    
+    
 
     return (
         <div className='flex justify-center items-center my-10 '>
@@ -108,17 +91,12 @@ const Register = () => {
                         <div>
                             <input type="submit" disabled={!accepeted} className='btn btn-sm bg-teal-700 my-2' value="Register" />
                         </div>
-                        <div>
-                            <p className='text-center font-semibold'><small>or login using</small></p>
-                            <p className='text-red-600 text-center font-bold'>{error}</p>
-                            <p className='text-green-600 text-center font-bold'>{success}</p>
-                        </div>
-                        <div className='flex justify-center  py-4'>
-                            <button onClick={handleGoogle} className='mx-2' > <img style={{ width: '37px' }} src="https://www.transparentpng.com/thumb/google-logo/colorful-google-logo-transparent-clipart-download-u3DWLj.png" alt="" /></button>
-                            <button onClick={handleGithub} className='mx-2'><img style={{ width: '28px' }} src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="" /></button>
-                        </div>
-                        <p><small>Already Have an Account? <Link to='/login' className='btn-link'>Login</Link></small></p>
                     </form>
+                    <div>
+                        <p className='text-red-600 text-center font-bold'>{error}</p>
+                        <p className='text-green-600 text-center font-bold'>{success}</p>
+                    </div>
+                    <p><small>Already Have an Account? <Link to='/login' className='btn-link'>Login</Link></small></p>
                 </div>
             </div>
         </div>

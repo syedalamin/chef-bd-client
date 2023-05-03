@@ -6,18 +6,20 @@ const SingleChef = ({ chef }) => {
     return (
         <div>
             <div className="card mx-auto bg-base-100 gap-2 shadow-xl">
-                <figure><img style={{ height: '200px', width: '100%' }} src={image_url} alt="Shoes" /></figure>
+                <figure><img style={{ height: '250px', width: '100%' }} src={image_url} alt="Shoes" /></figure>
                 <div className="card-body py-0">
                     <h2 className="card-title justify-center">{name}</h2>
                     <div className='flex'>
                         <p>Yearsws: {years_experience}</p>
                         <p>Recipes: {num_recipes}</p>
                     </div>
-                    <div className='flex justify-end py-4'>
+                    <div className='flex justify-between py-4 items-center'>
+                        <div>
                         <p>Like: {likes}</p>
-                        <p className='text-red-600 btn-link font-semibold'>
-                            <Link to={`/chef/${id}`}>View Recipes</Link>
-                        </p>
+                        </div>
+                        <div>
+                           <button className='px-3 py-1 text-white font-semibold rounded-md bg-teal-700 hover:bg-teal-950'><Link to={`/chef/${id}`}>View Recipes</Link></button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -11,9 +11,11 @@ const Login = () => {
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/';
 
+    const [error, setError] = useState('');
 
     const handleLogin = event => {
         event.preventDefault();
+        setError('')
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -22,10 +24,11 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                
                 navigate(from, { replace: true })
             })
             .catch(error => {
-                console.log(error.message)
+                setError(error.message)
             })
 
     }
@@ -41,7 +44,7 @@ const Login = () => {
                 navigate(from, { replace: true })
             })
             .catch(error => {
-                console.log(error.message)
+                setError(error.message)
             })
     }
     const handleGithub = () => {
@@ -52,7 +55,7 @@ const Login = () => {
                 navigate(from, { replace: true })
             })
             .catch(error => {
-                console.log(error.message)
+                setError(error.message)
             })
     }
 
@@ -78,6 +81,9 @@ const Login = () => {
                             <input type="submit" disabled={!accepeted} className='btn btn-sm bg-teal-700 my-2' value="Login" />
                         </div>
                     </form>
+                    <div>
+                        <p className='text-red-600 text-center font-bold'>{error}</p>
+                    </div>
                     <p className='text-center font-semibold'><small>or login using</small></p>
                     <div className='flex justify-center  py-4'>
                         <button onClick={handleGoogle} className='mx-2' > <img style={{ width: '37px' }} src="https://www.transparentpng.com/thumb/google-logo/colorful-google-logo-transparent-clipart-download-u3DWLj.png" alt="" /></button>

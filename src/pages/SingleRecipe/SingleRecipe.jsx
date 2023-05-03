@@ -2,7 +2,7 @@ import React from 'react';
 
 const SingleRecipe = ({ recipe }) => {
 
-
+    
     const { id, recipe_url, recipe_name, ingredients, cooking_method, rating } = recipe
     return (
         <>
