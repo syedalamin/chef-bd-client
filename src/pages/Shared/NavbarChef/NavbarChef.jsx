@@ -34,13 +34,13 @@ const NavbarChef = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+                    
                     {
-                        user && <Link>{user?.email}</Link>
+                        user &&  <img  className=' mx-5 rounded-full' style={{width: '50px'}} src={user?.photoURL}alt="" />
                     }
                     { user ?
                        <button onClick={handleLogOut} className='btn btn-sm '>LogOut</button>:
                        <Link to='/login'><button className='btn btn-sm '>Login</button></Link>
-                        
                     }
                 </div>
             </div>
