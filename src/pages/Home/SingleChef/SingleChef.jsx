@@ -10,7 +10,7 @@ const SingleChef = ({ chef }) => {
                 <div className="card-body py-0">
                     <h2 className="card-title justify-center">{name}</h2>
                     <div className='flex'>
-                        <p>Yearsws: {years_experience}</p>
+                        <p>Years: {years_experience}</p>
                         <p>Recipes: {num_recipes}</p>
                     </div>
                     <div className='flex justify-between py-4 items-center'>
