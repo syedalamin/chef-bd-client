@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const { createUser, signInGoogle, signInGithub } = useContext(AuthContext);
@@ -32,14 +33,26 @@ const Register = () => {
                 const creatededUser = result.user;
                 console.log(creatededUser);
                 setSuccess('user has created success');
-
+                updateUser(result.user, name, photo)
             })
-            .catch(error =>{
-                setError(error.message)
+            .catch(error => {
+                setError(error.message);
             })
 
     }
 
+    const updateUser = ( user, name, photoURL) =>{
+        updateProfile(user, {
+            displayName : name,
+            photoURL: photoURL,
+        })
+        .then(() =>{
+            console.log('username update');
+        })
+        .catch(error =>{
+            setError(error.message);
+        })
+    }
 
     const handleAccepted = event => {
         setAccepeted(event.target.checked);

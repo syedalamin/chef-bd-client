@@ -6,12 +6,14 @@ import Chef from "../pages/Chef/Chef";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import PrivetRoute from "./PrivetRoute";
+import Error from "../pages/Shared/Error/Error";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
