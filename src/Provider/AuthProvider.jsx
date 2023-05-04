@@ -51,7 +51,7 @@ const AuthProvider = ({children}) => {
 
     const [chefs, setChef] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/chef')
+        fetch('https://chef-bd-server-syedalamin.vercel.app/chef')
             .then(res => res.json())
             .then(data => setChef(data))
             .catch(error => console.log(error))
