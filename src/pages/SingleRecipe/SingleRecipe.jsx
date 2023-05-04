@@ -1,8 +1,9 @@
-import React  from 'react';
-
+import React from 'react';
+import Rating from 'react-rating';
+import { FaRegStar, FaStar } from 'react-icons/fa';
 const SingleRecipe = ({ recipe }) => {
-    const {  recipe_url, recipe_name, ingredients, cooking_method, rating } = recipe;
-    
+    const { recipe_url, recipe_name, ingredients, cooking_method, rating } = recipe;
+
 
     return (
         <>
@@ -18,7 +19,13 @@ const SingleRecipe = ({ recipe }) => {
                         <p>{ingredients.map(n => <li>{n}</li>)}</p>
                     </div>
                     <div>
-                        
+                        <Rating
+                            placeholderRating={rating}
+                            emptySymbol={<FaRegStar></FaRegStar>}
+                            placeholderSymbol={<FaStar className=' text-lg text-warning'></FaStar>}
+                            fullSymbol={<FaStar></FaStar>}
+                            readonly
+                        />
                     </div>
                 </div>
             </div>

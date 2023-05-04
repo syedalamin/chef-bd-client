@@ -11,7 +11,7 @@ const Chef = () => {
     const chef = chefs?.find(n => n.id == id)
     
     return (
-        <div className='w-10/12 mx-auto'>
+        <div className='w-10/12 mx-auto my-10'>
             <div>
                 <ChefBanner chef={chef}></ChefBanner>
             </div>

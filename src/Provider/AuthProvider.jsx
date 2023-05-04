@@ -55,7 +55,7 @@ const AuthProvider = ({children}) => {
             .then(res => res.json())
             .then(data => setChef(data))
             .catch(error => console.log(error))
-            setLoading(false)
+            setLoading(true)
     }, []);
 
 
