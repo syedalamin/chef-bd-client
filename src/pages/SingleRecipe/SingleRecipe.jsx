@@ -1,9 +1,18 @@
 import React from 'react';
 import Rating from 'react-rating';
-import { FaRegStar, FaStar } from 'react-icons/fa';
+import { FaRegStar, FaStar, FaBookmark } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const SingleRecipe = ({ recipe }) => {
     const { recipe_url, recipe_name, ingredients, cooking_method, rating } = recipe;
 
+    const handleClick = event => {
+        event.currentTarget.disabled = true;
+        
+    };
+    const notify = () => toast("favorite disable the button.");
 
     return (
         <>
@@ -12,7 +21,8 @@ const SingleRecipe = ({ recipe }) => {
                 <div className="card-body p-4">
                     <div className='flex '>
                         <h4 className='text-2xl font-bold flex-1'>{recipe_name}</h4>
-                        <button>hi</button>
+                        <button className='btn btn-success' onClick={handleClick} ><FaBookmark onClick={notify}></FaBookmark></button>
+                        <ToastContainer />
                     </div>
                     <div>
                         <p>{cooking_method}</p>
