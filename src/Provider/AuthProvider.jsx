@@ -49,7 +49,16 @@ const AuthProvider = ({children}) => {
         }
     },[]);
 
-   
+    const [chefs, setChef] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/chef')
+            .then(res => res.json())
+            .then(data => setChef(data))
+            .catch(error => console.log(error))
+            setLoading(false)
+    }, []);
+
+
 
     const authInfo = {
         user,
@@ -59,6 +68,7 @@ const AuthProvider = ({children}) => {
         loading,
         signInGoogle,
         signInGithub,
+        chefs,
     }
     return (
         <AuthContext.Provider value={authInfo}>

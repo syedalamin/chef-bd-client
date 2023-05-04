@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext, } from 'react';
 import SingleChef from '../SingleChef/SingleChef';
+const UserContext = createContext();
 const Chefs = () => {
     const [chef, setChef] = useState([]);
     useEffect(() => {

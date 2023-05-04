@@ -4,8 +4,6 @@ const SingleRecipe = ({ recipe }) => {
     const {  recipe_url, recipe_name, ingredients, cooking_method, rating } = recipe;
     
 
-    
-
     return (
         <>
             <div className="card  bg-base-100 shadow-xl border-2">
