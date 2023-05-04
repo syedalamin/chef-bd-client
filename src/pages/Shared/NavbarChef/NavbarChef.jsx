@@ -1,18 +1,22 @@
-import React, { useContext } from 'react';
-import {Link} from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import './navbarChef.css'
 import ActiveLink from '../../Home/ActiveLink/ActiveLink';
 const NavbarChef = () => {
 
-    const {user, logOut} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
-    const handleLogOut =()=>{
+    const handleLogOut = () => {
         logOut()
-        .then()
-        .catch(error => console.log(error.message))
+            .then()
+            .catch(error => console.log(error.message))
     }
 
+    const [hover, setHover] = useState(false);
+    const onHover = () => {
+        setHover(!hover);
+    };
 
     return (
         <div className='bg-gray-100 '>
@@ -32,19 +36,20 @@ const NavbarChef = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <ActiveLink  to='/'>Home</ActiveLink>
+                        <ActiveLink to='/'>Home</ActiveLink>
                         <ActiveLink to='/blog'>Blog</ActiveLink>
                         <ActiveLink to='/register'>Register</ActiveLink>
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    
+                {hover && <h1>{user.displayName}</h1>}
                     {
-                        user &&  <img  className=' mx-5 rounded-full' style={{width: '35px', height: '35px'}} src={user.photoURL}alt="" />
+                        user && <img onMouseEnter={onHover}
+                        onMouseLeave={onHover}  className=' mx-5 rounded-full' style={{ width: '35px', height: '35px' }} src={user.photoURL} alt="" />
                     }
-                    { user ?
-                       <button onClick={handleLogOut} className='btn btn-sm bg-green-700'>LogOut</button>:
-                       <Link to='/login'><button className='btn btn-sm bg-teal-700'>Login</button></Link>
+                    {user ?
+                        <button onClick={handleLogOut} className='btn btn-sm bg-green-700'>LogOut</button> :
+                        <Link to='/login'><button className='btn btn-sm bg-teal-700'>Login</button></Link>
                     }
                 </div>
             </nav>
