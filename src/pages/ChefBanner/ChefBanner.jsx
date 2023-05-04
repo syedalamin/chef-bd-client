@@ -1,5 +1,5 @@
 import React from 'react';
-
+import LazyLoad from 'react-lazy-load';
 const ChefBanner = ({ chef }) => {
     console.log(chef);
     const { id, image_url, name, years_experience, num_recipes, likes, bio } = chef;
@@ -7,7 +7,9 @@ const ChefBanner = ({ chef }) => {
         <div>
             <div className=" grid gap-4 md:grid-cols-3 bg-base-100 shadow-xl border rounded-md">
                 <div>
-                    <figure><img className='rounded-md' style={{ height: '250px', width: '100%' }} src={image_url} alt="Movie" /></figure>
+                    <LazyLoad threshold={0.95}>
+                        <figure><img className='rounded-md' style={{ height: '250px', width: '100%' }} src={image_url} alt="Movie" /></figure>
+                    </LazyLoad>
                 </div>
                 <div className="md:col-span-2  p-4 flex items-center">
                     <div>

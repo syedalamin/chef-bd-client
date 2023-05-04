@@ -10,7 +10,7 @@ const SingleRecipe = ({ recipe }) => {
 
     const handleClick = event => {
         event.currentTarget.disabled = true;
-        
+
     };
     const notify = () => toast("favorite disable the button.");
 
